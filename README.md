@@ -1,3 +1,4 @@
-# glossario_de_oclusao
+# Glossário de Oclusão
 
-A new Flutter project.
+Enzo Goulart Alvarenga Costa
+837214
