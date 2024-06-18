@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:glossario_de_oclusao/pages/glossario/glossario.dart';
-import 'package:glossario_de_oclusao/pages/login/login_page.dart';
-import 'package:glossario_de_oclusao/pages/sobre/sobre.dart';
+import 'package:glossario_de_oclusao/view/glossario_view.dart';
+import 'package:glossario_de_oclusao/view/login_view.dart';
+import 'package:glossario_de_oclusao/view/sobre_view.dart';
 
 Drawer getDrawer(BuildContext context) {
   return Drawer(
@@ -29,7 +29,7 @@ Drawer getDrawer(BuildContext context) {
         ListTile(
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const SobrePage()),
+              MaterialPageRoute(builder: (context) => const SobreView()),
             );
           },
           leading: Icon(
@@ -41,7 +41,7 @@ Drawer getDrawer(BuildContext context) {
         ListTile(
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const GlossarioPage()),
+              MaterialPageRoute(builder: (context) => const GlossarioView()),
             );
           },
           leading: Icon(
@@ -53,7 +53,7 @@ Drawer getDrawer(BuildContext context) {
         ListTile(
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const LoginPage()),
+              MaterialPageRoute(builder: (context) => const LoginView()),
             );
           },
           leading: Icon(

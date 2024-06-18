@@ -1,9 +1,22 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:glossario_de_oclusao/controller/login_controller.dart';
 
-class EsqueciMinhaSenha extends StatelessWidget {
-  const EsqueciMinhaSenha({super.key});
+class EsqueciMinhaSenhaView extends StatefulWidget {
+  const EsqueciMinhaSenhaView({super.key});
+
+  @override
+  State<EsqueciMinhaSenhaView> createState() => _EsqueciMinhaSenhaViewState();
+}
+
+class _EsqueciMinhaSenhaViewState extends State<EsqueciMinhaSenhaView> {
+  var txtEmailEsqueceuSenha = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +117,7 @@ class EsqueciMinhaSenha extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtEmailEsqueceuSenha,
                       decoration: InputDecoration(
                         icon: Icon(Icons.email),
                         hintText: 'E-mail',
@@ -124,11 +138,38 @@ class EsqueciMinhaSenha extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Center(
-                      child: Text(
-                        'ENVIAR',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                      child: GestureDetector(
+                        onTap: () {
+                          //
+                          // Enviar email recuperação de senha
+                          //
+                          LoginController().esqueceuSenha(
+                            context,
+                            txtEmailEsqueceuSenha.text,
+                          );
+                        },
+                        child: Container(
+                          //margin: EdgeInsets.only(top: 32),
+                          width: 300,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.blue,
+                                Colors.blueGrey,
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'ENVIAR',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),

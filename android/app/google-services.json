@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1043662098458",
+    "project_id": "glossario-de-oclusao-e7a08",
+    "storage_bucket": "glossario-de-oclusao-e7a08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043662098458:android:a507bbcafc587697ab41a3",
+        "android_client_info": {
+          "package_name": "com.example.glossario_de_oclusao"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAubKiNOFTdhNT_cdls5HTLwAKc53iZ9HY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

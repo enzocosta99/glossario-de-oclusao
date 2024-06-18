@@ -1,13 +1,26 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:glossario_de_oclusao/pages/esqueci_minha_senha/esqueci_minha_senha.dart';
-import 'package:glossario_de_oclusao/pages/glossario/glossario.dart';
-import 'package:glossario_de_oclusao/pages/register/register_page.dart';
+import 'package:glossario_de_oclusao/controller/login_controller.dart';
+import 'package:glossario_de_oclusao/view/esqueci_minha_senha_view.dart';
+import 'package:glossario_de_oclusao/view/register_view.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  var txtEmail = TextEditingController();
+  var txtSenha = TextEditingController();
+  var txtEmailEsqueceuSenha = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +96,7 @@ class LoginPage extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtEmail,
                       decoration: InputDecoration(
                         icon: Icon(Icons.email),
                         hintText: 'E-mail',
@@ -107,6 +121,8 @@ class LoginPage extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtSenha,
+                      obscureText: true,
                       decoration: InputDecoration(
                         icon: Icon(Icons.key),
                         hintText: 'Senha',
@@ -126,7 +142,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const EsqueciMinhaSenha()),
+                            MaterialPageRoute(builder: (context) => const EsqueciMinhaSenhaView()),
                           );
                         },
                       ),
@@ -134,12 +150,13 @@ class LoginPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap:() {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const GlossarioPage()),
+                      LoginController().login(
+                        context,
+                        txtEmail.text,
+                        txtSenha.text,
                       );
                     },
                     child: Container(
-                      //margin: EdgeInsets.only(top: 32),
                       width: 300,
                       height: 50,
                       decoration: BoxDecoration(
@@ -175,7 +192,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const RegisterPage()),
+                            MaterialPageRoute(builder: (context) => const RegisterView()),
                           );
                         },
                       ),

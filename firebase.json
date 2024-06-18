@@ -1,0 +1,37 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "glossario-de-oclusao-e7a08",
+          "appId": "1:1043662098458:android:a507bbcafc587697ab41a3",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "glossario-de-oclusao-e7a08",
+          "configurations": {
+            "android": "1:1043662098458:android:a507bbcafc587697ab41a3",
+            "ios": "1:1043662098458:ios:36507aea0bdfacd6ab41a3",
+            "web": "1:1043662098458:web:9818e19c879d379cab41a3"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

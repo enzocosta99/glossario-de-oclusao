@@ -1,10 +1,19 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:glossario_de_oclusao/pages/login/login_page.dart';
+import 'package:glossario_de_oclusao/firebase_options.dart';
+import 'package:glossario_de_oclusao/view/login_view.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     DevicePreview(
       enabled: true,
@@ -24,7 +33,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: LoginView(),
     );
   }
 }

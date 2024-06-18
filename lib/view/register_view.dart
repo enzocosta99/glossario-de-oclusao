@@ -1,11 +1,26 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:glossario_de_oclusao/pages/login/login_page.dart';
+import 'package:glossario_de_oclusao/controller/login_controller.dart';
+import 'package:glossario_de_oclusao/view/login_view.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
+
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+  var txtNome = TextEditingController();
+  var txtEmail = TextEditingController();
+  var txtCodigoMatricula = TextEditingController();
+  var txtSenha = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +96,7 @@ class RegisterPage extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtNome,
                       decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'Nome',
@@ -105,6 +121,7 @@ class RegisterPage extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtEmail,
                       decoration: InputDecoration(
                         icon: Icon(Icons.mail),
                         hintText: 'E-mail',
@@ -129,6 +146,7 @@ class RegisterPage extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtCodigoMatricula,
                       decoration: InputDecoration(
                         icon: Icon(Icons.app_registration),
                         hintText: 'Código De Matrícula',
@@ -153,6 +171,8 @@ class RegisterPage extends StatelessWidget {
                       ]
                     ),
                     child: TextField(
+                      controller: txtSenha,
+                      obscureText: true,
                       decoration: InputDecoration(
                         icon: Icon(Icons.key),
                         hintText: 'Senha',
@@ -161,9 +181,27 @@ class RegisterPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const LoginPage()),
-                      );
+
+                      String email = txtEmail.text.trim();
+
+                      if(email.endsWith("@sou.unaerp.edu.br")) {
+
+                        LoginController().criarConta(
+                          context,
+                          txtNome.text,
+                          txtEmail.text,
+                          txtCodigoMatricula.text,
+                          txtSenha.text,
+                        );
+
+                      } else {
+
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("E-mail não permitido. Use um e-mail @sou.unaerp.edu.br"),
+                        ));
+
+                      }
+                      
                     },
                     child: Container(
                       margin: EdgeInsets.only(top: 32),
@@ -202,7 +240,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                         onPressed: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const LoginPage()),
+                            MaterialPageRoute(builder: (context) => const LoginView()),
                           );
                         },
                       ),
